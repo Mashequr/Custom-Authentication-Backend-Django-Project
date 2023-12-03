@@ -1,0 +1,45 @@
+name: Django CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10
+
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Linting
+      run: flake8 .
+
+    - name: Apply Django Migrations
+      run: python manage.py migrate
+
+    - name: Run Django Tests
+      run: python manage.py test
+
+    - name: Run API Tests
+      run: |
+        # Replace the command with the actual one you use to run your API tests
+        # Example command using a tool like httpie
+        source venv/bin/activate
+        http -f POST http://127.0.0.1:8000/login username="robert" password="pass1234"
+        http -f POST http://127.0.0.1:8000/signup username="trent" password="pass1234" email="trent@gmail.com"
+        http GET http://127.0.0.1:8000/test_token Authorization:"Token YOUR_TOKEN"
+
