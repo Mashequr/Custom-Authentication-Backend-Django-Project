@@ -42,10 +42,9 @@ jobs:
 
     - name: Run API Tests
       run: |
-        # Replace the command with the actual one you use to run your API tests
-        # Example command using a tool like httpie
         source venv/bin/activate
-        http -f POST http://127.0.0.1:8000/login username="robert" password="pass1234"
-        http -f POST http://127.0.0.1:8000/signup username="trent" password="pass1234" email="trent@gmail.com"
-        http GET http://127.0.0.1:8000/test_token Authorization:"Token YOUR_TOKEN"
+        cat test.rest | httpie --session=./httpie-session
+
+    - name: Stop Django development server
+      run: pkill -f "python manage.py runserver"
 
