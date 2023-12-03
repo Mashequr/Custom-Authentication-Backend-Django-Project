@@ -42,7 +42,7 @@ jobs:
 
     - name: Stop Django development server
       run: |
-        # Find the Django process using lsof and kill it
-        lsof -i :8000 | awk 'NR!=1 {print $2}' | xargs pkill -9
+        # Stop the Django development server using pkill
+        pkill -f "python manage.py runserver"
 
 
