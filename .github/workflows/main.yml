@@ -31,6 +31,13 @@ jobs:
         pip install Django
         python manage.py migrate
 
+    - name: Linting
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install flake8
+        flake8 .
+
 
     - name: Run Django Tests
       run: |
