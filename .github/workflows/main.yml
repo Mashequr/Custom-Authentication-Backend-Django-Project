@@ -25,7 +25,11 @@ jobs:
         pip install Django djangorestframework
 
     - name: Linting
-      run: flake8 .
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install flake8
+        flake8 .
 
     - name: Apply Django Migrations
       run: python manage.py migrate
