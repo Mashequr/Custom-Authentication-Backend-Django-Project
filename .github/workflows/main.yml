@@ -40,9 +40,5 @@ jobs:
         python manage.py test
 
 
-    - name: Stop Django development server
-      run: |
-        # Stop the Django development server using pkill
-        pkill -f "python manage.py runserver"
 
 
