@@ -33,7 +33,12 @@ jobs:
 
 
     - name: Run Django Tests
-      run: python manage.py test
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install Django
+        python manage.py test
+
 
     - name: Run API Tests
       run: |
