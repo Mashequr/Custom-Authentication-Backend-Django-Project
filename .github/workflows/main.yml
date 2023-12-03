@@ -25,7 +25,12 @@ jobs:
         pip install Django djangorestframework
 
     - name: Apply Django Migrations
-      run: python manage.py migrate
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install Django
+        python manage.py migrate
+
 
     - name: Run Django Tests
       run: python manage.py test
