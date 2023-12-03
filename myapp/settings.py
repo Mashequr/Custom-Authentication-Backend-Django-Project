@@ -37,6 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+]
+# settings.py
+
+AUTHENTICATION_BACKENDS = [
+    'myapp.backends.CustomAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Default Django backend
 ]
 
 MIDDLEWARE = [
