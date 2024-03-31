@@ -31,3 +31,5 @@ Dockerizing the Django Application
 - Use `docker run` to start a container based on your image.
 4. Docker Compose (Optional)
 - If your application requires services like a database, use Docker Compose to define and run multi-container Docker applications.
+
+Project run-through video: https://drive.google.com/file/d/1KXim99ZE2zIhrcJV6h8OQIGg1dgGWg1p/view?usp=drive_link
